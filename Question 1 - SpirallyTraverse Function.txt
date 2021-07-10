@@ -1,0 +1,31 @@
+
+public static List<Integer> spirallyTraverse(int A[][], int rows, int cols) {
+        List<Integer> result = new ArrayList<Integer>();
+        int top = 0, bottom = rows-1, left = 0, right = cols-1;
+        int direction = 0;
+
+        while(top <= bottom && left <= right) {
+            if(direction == 0) {
+                for(int i= left; i <= right; i++) 
+                    result.add(A[top][i]);
+                top++;
+            }
+            else if(direction == 1){
+                for(int i = top; i<=bottom; i++)
+                    result.add(A[i][right]);
+                right--;    
+            }
+            else if(direction == 2){
+                for(int i = right; i>=left; i--)
+                    result.add(A[bottom][i]);
+                bottom--;
+            }
+            else if(direction == 3){
+                for(int i = bottom; i>=top; i--)
+                    result.add(A[i][left]);
+                left++;
+            }
+            direction = (direction+1)%4;
+        }
+        return result;
+    }
