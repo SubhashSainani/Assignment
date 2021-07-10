@@ -1,0 +1,14 @@
+public static int activitySelection(int[] start, int[] finish, int n) {
+        int i;
+        List<Integer> result = new ArrayList<Integer>();
+        i = 0;
+        result.add(i);
+        for(int j=1; j<n; j++) {
+            if(start[j] >= finish[i]) {
+                result.add(j);
+                i = j;
+            }
+        }
+        return result.size();
+
+    }
