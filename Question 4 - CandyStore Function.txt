@@ -1,0 +1,33 @@
+public static List<Integer> candyStore(int[] candies, int N, int K){
+        Arrays.sort(candies);
+        int max = 0;
+        int min = 0;
+        List<Integer> result = new ArrayList<Integer>();
+        int temp;
+        int i = 0;
+        int j = N-1;
+        while(i <= j){
+            min+= candies[i];
+            i++;
+            j = j-K;
+        }
+        for (int x = 0; x < candies.length; x++) {
+            for (int y = x + 1; y < candies.length; y++) {  
+                if (candies[x] < candies[y]){  
+                    temp = candies[x];  
+                    candies[x] = candies[y];  
+                    candies[y] = temp;  
+                }  
+            }  
+        }
+        int a = 0;
+        int b = N - 1;
+        while(a <= b) {
+            max+= candies[a];
+            a++;
+            b = b-K;
+        }  
+        result.add(min);
+        result.add(max);
+        return result;
+    }
